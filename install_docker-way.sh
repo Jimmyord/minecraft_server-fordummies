@@ -14,5 +14,6 @@ else
 fi
 docker tag serveurminecraft:latest jimmyord/minecraft_server:$version
 docker tag serveurminecraft:latest jimmyord/minecraft_server:last
+docker login -u $dockerlogin -p $dockerpassword
 docker push jimmyord/minecraft_server:$version
 docker push jimmyord/minecraft_server:last
