@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        version: 1.12.2
+        versionminecraft: 1.12.2
     container_name: minecraft
     image: serveurminecraft
     restart: unless-stopped
