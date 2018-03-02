@@ -6,7 +6,7 @@ do
 version=$ligne
 sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
 #Now let's build the container
-docker-compose up -d 
+docker-compose up --force-recreate -d 
 if [[ $? = 0 ]] 
 then
 	echo "Server is running."
