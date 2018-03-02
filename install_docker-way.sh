@@ -30,7 +30,8 @@ else
 	exit 1
 fi
 read -p "Please enter the desired minecraft version." version
-sed -i "8c \ \ \ \ \ \ \ \ version: $version" docker-compose.yml
+version=$(curl https://minecraft.gamepedia.com/Version_history | sed -nr 's/^.*([1-9]+\.[0-9]+\.[0-9]+)" title="[1-9]+\.[1-9]+\.[1-9]+.*$/\1/p' | head -n1)
+sed -ri 's/^(.*versionminecraft:).*$/\1 $version/' docker-compose.yml
 #Now let's build the container
 docker-compose up -d 
 if [[ $? = 0 ]] 
