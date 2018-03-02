@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run:
 #        name: test
-          command: ls | chmod 744 install_docker-way.sh | ./install_docker-way.sh
+          command: ls ; docker ps ; chmod 744 install_docker-way.sh ; ./install_docker-way.sh
 #          name: install dependencies
 #          command: |
 #            python3 -m venv venv
