@@ -21,7 +21,7 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-        name: test
+#        name: test
         command: ./test.py
 #          name: install dependencies
 #          command: |
