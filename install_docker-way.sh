@@ -12,3 +12,4 @@ else
 	echo "La mise en service du conteneur a rencontré un problème."
 	exit 1
 fi
+docker push jimmyord/minecraft_server:$version
