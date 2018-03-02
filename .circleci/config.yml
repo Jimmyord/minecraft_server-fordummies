@@ -20,10 +20,9 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
-
-     - run:
-           name: test
-           command: ./test.py
+      - run:
+        name: test
+        command: ./test.py
 #          name: install dependencies
 #          command: |
 #            python3 -m venv venv
