@@ -22,9 +22,8 @@ jobs:
       - checkout
 
      - run:
-           name: lancement conteneur
-           command:  |
-             ./test.py
+           name: test
+           command: ./test.py
 #          name: install dependencies
 #          command: |
 #            python3 -m venv venv
