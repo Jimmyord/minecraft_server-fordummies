@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run:
 #        name: test
-          command: chmod 744 test.py | ./test.py
+          command: chmod 744 test.py | python test.py
 #          name: install dependencies
 #          command: |
 #            python3 -m venv venv
