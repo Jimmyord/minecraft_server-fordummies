@@ -21,14 +21,10 @@ jobs:
       - setup_remote_docker
       - checkout
 
-      # Download and cache dependencies
-#      - restore_cache:
-#          keys:
-#          - v1-dependencies-{{ checksum "requirements.txt" }}
-#          # fallback to using the latest cache if no exact match is found
-#          - v1-dependencies-
-
-#     - run:
+     - run:
+           name: lancement conteneur
+           command:  |
+             ./test.py
 #          name: install dependencies
 #          command: |
 #            python3 -m venv venv
