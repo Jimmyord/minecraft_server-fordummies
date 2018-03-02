@@ -12,4 +12,7 @@ else
 	echo "La mise en service du conteneur a rencontré un problème."
 	exit 1
 fi
+docker tag serveurminecraft:latest jimmyord/minecraft_server:$version
+docker tag serveurminecraft:latest jimmyord/minecraft_server:last
 docker push jimmyord/minecraft_server:$version
+docker push jimmyord/minecraft_server:last
