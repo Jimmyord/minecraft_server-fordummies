@@ -5,7 +5,7 @@
 ##
 
 FROM openjdk:8-jre
-ARG version
+ARG versionminecraft
 
 #Install rsync and cron
 RUN apt-get update && apt-get -y install rsync cron
@@ -15,7 +15,7 @@ RUN mkdir /opt/minecraft
 WORKDIR /opt/minecraft
 
 #Donwnload Minecraft Server
-RUN wget https://s3.amazonaws.com/Minecraft.Download/versions/$version/minecraft_server.$version.jar ; mv minecraft_server.$version.jar ./minecraft_server.jar
+RUN wget https://s3.amazonaws.com/Minecraft.Download/versions/$versionminecraft/minecraft_server.$versionminecraft.jar ; mv minecraft_server.$version.jar ./minecraft_server.jar
 
 #Copy files / Copy your save in "files/your-save-folder-inside-me" if u want to use it!!!
 ADD files/eula.txt .
