@@ -22,6 +22,6 @@ docker tag serveurminecraft:latest jimmyord/minecraft_server:$version
 docker rmi serveurminecraft:latest
 #docker tag serveurminecraft:latest jimmyord/minecraft_server:last
 docker push jimmyord/minecraft_server:$version
-#docker push jimmyord/minecraft_server:last
+#docker push jimmyord/minecraft_server:latest
 done < <(cat minecraft.txt)
 docker logout
