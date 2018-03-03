@@ -1,5 +1,7 @@
 #!/bin/bash
 curl https://minecraft.gamepedia.com/Version_history | sed -nr 's/^.*([1-9]+\.[0-9]+\.[0-9]+)" title="[1-9]+\.[1-9]+\.[1-9]+.*$/\1/p' > minecraft.txt
+#Suppression des versions indisponibles
+sed -ir 's/1.2.[1-4]//g' minecraft.txt
 while read ligne
 do
 #version=$(curl https://minecraft.gamepedia.com/Version_history | sed -nr 's/^.*([1-9]+\.[0-9]+\.[0-9]+)" title="[1-9]+\.[1-9]+\.[1-9]+.*$/\1/p' | head -n1)
