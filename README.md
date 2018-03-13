@@ -12,4 +12,3 @@
 - Run setup-wizard.sh as root
 - Follow the instructions 
 - Play!
-- aisselle
