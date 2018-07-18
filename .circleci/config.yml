@@ -21,7 +21,8 @@ workflows:
           cron: "0 17 * * *"
           filters:
             branches:
-              only: master
+              only:
+                - master
     jobs:
 #      - hold:
 #          type: approval    
