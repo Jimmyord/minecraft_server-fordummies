@@ -17,11 +17,9 @@ workflows:
   version: 2
   limited_building:
     jobs:
+      - hold:
+          type: approval    
       - build
-    triggers:
-      - schedule:
-          cron: "35 16 * * *"
-          filters:
-            branches:
-              only:
-                - master
+#    triggers:
+#      - schedule:
+#          cron: "35 16 * * *"
