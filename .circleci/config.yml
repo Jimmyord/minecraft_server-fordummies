@@ -23,9 +23,9 @@ workflows:
             branches:
               only:
                 - master
-    jobs:
+    jobs: "build"
 #      - hold:
 #          type: approval    
-      - build
+#      - build
 #          requires:
 #            - hold
