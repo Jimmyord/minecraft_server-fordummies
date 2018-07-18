@@ -20,7 +20,7 @@ workflows:
   version: 2
   limited_building:
     jobs:
-      - build:
+      build:
         - docker
     triggers:
       - schedule:
