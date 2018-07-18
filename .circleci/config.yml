@@ -16,12 +16,12 @@ jobs:
 workflows:
   version: 2
   limited_building:
+    triggers:
+      - schedule:
+        cron: "0 17 * * *"
     jobs:
-      - hold:
-          type: approval    
+#      - hold:
+#          type: approval    
       - build:
           requires:
             - hold
-#    triggers:
-#      - schedule:
-#          cron: "35 16 * * *"
