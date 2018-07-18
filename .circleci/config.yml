@@ -4,9 +4,6 @@
 #
 version: 2
 jobs:
-  test:
-    steps:
-      - run: echo "Hello, world!"
   build:
     docker:
       - image: circleci/python:3.6.1
@@ -15,13 +12,12 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-          command: chmod 744 DockerHub_Update.sh ; ./DockerHub_Update.sh
+        - command: chmod 744 DockerHub_Update.sh ; ./DockerHub_Update.sh
 workflows:
   version: 2
-  limited_building:
+  prod:
     jobs:
-      build:
-        - docker
+      build
     triggers:
       - schedule:
           cron: "05 19 * * *"
