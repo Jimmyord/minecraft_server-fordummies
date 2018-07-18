@@ -12,4 +12,15 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-          command: ls ; docker ps ; chmod 744 install_docker-way.sh ; ./install_docker-way.sh
+          command: chmod 744 install_docker-way.sh ; ./install_docker-way.sh
+workflows:
+  limited_building:
+    jobs:
+      - build
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
