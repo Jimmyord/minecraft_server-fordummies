@@ -26,6 +26,6 @@ workflows:
     jobs:
 #      - hold:
 #          type: approval    
-      - build:
+      - build
 #          requires:
 #            - hold
