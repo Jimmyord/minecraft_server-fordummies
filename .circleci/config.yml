@@ -18,7 +18,7 @@ workflows:
   prod:
     triggers:
       - schedule:
-          cron: "20 20 * * *"
+          cron: "0 21 * * *"
           filters:
             branches:
               only: "master"
