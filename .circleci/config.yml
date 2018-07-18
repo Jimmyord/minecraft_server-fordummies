@@ -20,6 +20,8 @@ workflows:
       - hold:
           type: approval    
       - build
+          requires:
+            - hold
 #    triggers:
 #      - schedule:
 #          cron: "35 16 * * *"
