@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  buil:
+  build:
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/repo
@@ -18,10 +18,10 @@ workflows:
   prod:
     triggers:
       - schedule:
-          cron: "05 20 * * *"
+          cron: "20 20 * * *"
           filters:
             branches:
               only:
                 - master
     jobs:
-      - buil
+      - build
