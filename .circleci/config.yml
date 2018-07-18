@@ -15,12 +15,16 @@ jobs:
           - command: chmod 744 DockerHub_Update.sh ; ./DockerHub_Update.sh
 workflows:
   version: 2
-  prod:
+  commit-workflow:
+    jobs:
+      - build
+  schedule-workflow:
     triggers:
       - schedule:
           cron: "0 21 * * *"
           filters:
             branches:
-              only: "master"
+              only:
+                - "master"
     jobs:
       - build
