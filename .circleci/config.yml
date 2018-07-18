@@ -4,6 +4,8 @@
 #
 version: 2
 jobs:
+  test:
+    - run: echo "Hello, world!"
   build:
     docker:
       - image: circleci/python:3.6.1
@@ -25,3 +27,6 @@ workflows:
                 - master
     jobs:
       - build
+      - test:
+        requires:
+          - build
