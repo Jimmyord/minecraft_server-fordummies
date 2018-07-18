@@ -18,14 +18,10 @@ workflows:
   limited_building:
     triggers:
       - schedule:
-          cron: "20 18 * * *"
+          cron: "25 18 * * *"
           filters:
             branches:
               only:
                 - master
-    jobs: "build"
-#      - hold:
-#          type: approval    
-#      - build
-#          requires:
-#            - hold
+    jobs:
+      build
