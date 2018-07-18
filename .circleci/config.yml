@@ -19,6 +19,8 @@ jobs:
 workflows:
   version: 2
   limited_building:
+    jobs:
+      - build
     triggers:
       - schedule:
           cron: "25 18 * * *"
@@ -26,8 +28,3 @@ workflows:
             branches:
               only:
                 - master
-    jobs:
-      - build
-      - test
-#        - requires:
-#          build
