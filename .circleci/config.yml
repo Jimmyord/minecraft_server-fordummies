@@ -18,7 +18,7 @@ workflows:
   limited_building:
     triggers:
       - schedule:
-          cron: "0 17 * * *"
+          cron: "50 17 * * *"
           filters:
             branches:
               only:
