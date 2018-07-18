@@ -18,7 +18,7 @@ workflows:
   limited_building:
     triggers:
       - schedule:
-        cron: "0 17 * * *"
+          cron: "0 17 * * *"
     jobs:
 #      - hold:
 #          type: approval    
