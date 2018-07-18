@@ -20,6 +20,6 @@ workflows:
       - schedule:
           cron: "20 20 * * *"
           filters:
-            branches
+            - branches
     jobs:
       - build
