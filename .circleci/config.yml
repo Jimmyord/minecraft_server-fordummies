@@ -26,7 +26,7 @@ workflows:
               only:
                 - master
     jobs:
-      - build
-      - test:
-        - requires:
-          - build
+        - build
+        - test:
+          - requires:
+            - build
