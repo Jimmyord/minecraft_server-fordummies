@@ -17,7 +17,7 @@ workflows:
   version: 2
   prod:
     jobs:
-      build
+      - build
     triggers:
       - schedule:
           cron: "05 19 * * *"
