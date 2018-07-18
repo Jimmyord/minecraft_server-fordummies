@@ -12,15 +12,15 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-        - command: chmod 744 DockerHub_Update.sh ; ./DockerHub_Update.sh
+          - command: chmod 744 DockerHub_Update.sh ; ./DockerHub_Update.sh
 workflows:
   version: 2
   prod:
     triggers:
       - schedule:
-        cron: "20 20 * * *"
-        filters:
-          branches:
-            only: "master"
+          cron: "20 20 * * *"
+          filters:
+            branches:
+              only: "master"
     jobs:
       - build
