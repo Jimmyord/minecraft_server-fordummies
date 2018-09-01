@@ -9,7 +9,8 @@ RUN apt-get update
 RUN mkdir /opt/minecraft
 WORKDIR /opt/minecraft
 #Donwnload Minecraft Server
-RUN wget https://s3.amazonaws.com/Minecraft.Download/versions/$versionminecraft/minecraft_server.$versionminecraft.jar ; mv minecraft_server.$versionminecraft.jar ./minecraft_server.jar
+RUN url=$(curl https://minecraft.gamepedia.com/$versionminecraft | sed -rn 's/.*href="(.*)">Server<\/a>.*/\1/p')
+RUN wget $url
 #Copy files / Copy your save in "files/your-save-folder-inside-me" if u want to use it!!!
 ADD files/eula.txt .
 ADD files/server.properties .
@@ -17,7 +18,7 @@ ADD files/ops.json .
 ADD files/your-save-folder-inside-me ./save/
 #Start minecraft
 #VOLUME /opt/minecraft/
-ENTRYPOINT ["java", "-Xms1536M", "-Xmx1536M", "-jar", "/opt/minecraft/minecraft_server.jar", "nogui"]
+ENTRYPOINT ["java", "-Xms1536M", "-Xmx1536M", "-jar", "/opt/minecraft/server.jar", "nogui"]
 EXPOSE 25565
 #Add your save to the server
 #Use the script : save.sh
