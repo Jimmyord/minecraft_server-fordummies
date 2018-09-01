@@ -1,6 +1,6 @@
 #!/bin/bash
 docker login -u $dockerlogin -p $dockerpassword
-curl https://minecraft.gamepedia.com/Java_Edition_version_history | sed -nr 's/^.*([0-9]+)(\.[0-9]+)(\.[0-9])?" title="([0-9]+)(\.[0-9]+)(\.[0-9]+)?".*$/\1\2\3/p' > minecraft.txt
+curl https://minecraft.gamepedia.com/Java_Edition_version_history | sed -nE 's/^.*\/([0-9]{1,2}\.[0-9]{1,2}\.?[0-9]?)" title="([0-9]{1,2}\.[0-9]{1,2}\.?[0-9]?)".*$/\1/p' > minecraft.txt
 #Delete unavailable versions
 sed -ir '/^.*1.2.[1-4].*$/d' minecraft.txt
 while read ligne
