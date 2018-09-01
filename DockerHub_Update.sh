@@ -7,10 +7,9 @@ while read ligne
 do
 	test=$(echo $ligne | sed -r 's/\./\\./g')
 	test2=$(curl https://hub.docker.com/r/jimmyord/minecraft_server/tags/ | sed -En "s/^.*($test).*$/\1/p")
-	echo "$test2 $ligne"
 	if [ -n "$test2" ]
 	then
-		echo "$version existe déjà!"
+		echo "$ligne existe déjà!"
 	else
 		version=$ligne
 		sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
