@@ -6,7 +6,7 @@ sed -ir '/^.*1.2.[1-4].*$/d' minecraft.txt
 while read ligne
 do
 	test=$(echo $ligne | sed -r 's/\./\\./g')
-	if [[ $ligne != $(curl https://hub.docker.com/r/jimmyord/minecraft_server/tags/ | sed -En 's/^.*($test).*$/\1/p') ]]
+	if [ "$ligne"!= "$(curl https://hub.docker.com/r/jimmyord/minecraft_server/tags/ | sed -En 's/^.*($test).*$/\1/p')" ]
 	then
 		version=$ligne
 		sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
