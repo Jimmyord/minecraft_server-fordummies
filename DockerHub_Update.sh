@@ -8,7 +8,7 @@ do
 	test=$(echo $ligne | sed -r 's/\./\\./g')
 	test2=$(curl https://hub.docker.com/r/jimmyord/minecraft_server/tags/ | sed -En "s/^.*($test).*$/\1/p")
 	echo "$test2 $ligne"
-	if [ $ligne != $test2 ]
+	if [ -n "$test2" ]
 	then
 		version=$ligne
 		sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
