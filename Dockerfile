@@ -9,8 +9,7 @@ RUN apt-get update
 RUN mkdir /opt/minecraft
 WORKDIR /opt/minecraft
 #Donwnload Minecraft Server
-RUN url=$(curl https://minecraft.gamepedia.com/$versionminecraft | sed -rn 's/.*href="(.*)">Server<\/a>.*/\1/p')
-RUN wget $url
+RUN wget $(curl https://minecraft.gamepedia.com/$versionminecraft | sed -rn 's/.*href="(.*)">Server<\/a>.*/\1/p')
 #Copy files / Copy your save in "files/your-save-folder-inside-me" if u want to use it!!!
 ADD files/eula.txt .
 ADD files/server.properties .
