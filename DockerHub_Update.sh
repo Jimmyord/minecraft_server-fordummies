@@ -24,8 +24,9 @@ then
 	docker rmi serveurminecraft:latest
 	docker push jimmyord/minecraft_server:$version
 #docker push jimmyord/minecraft_server:latest
-	done < <(cat minecraft.txt)
-	docker logout
 else
 	echo "$version existe déjà!"
 fi
+done < <(cat minecraft.txt)
+docker logout
+
