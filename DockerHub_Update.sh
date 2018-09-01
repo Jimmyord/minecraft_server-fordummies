@@ -10,6 +10,8 @@ do
 	echo "$test2 $ligne"
 	if [ -n "$test2" ]
 	then
+		echo "$version existe déjà!"
+	else
 		version=$ligne
 		sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
 		#Building and running the container
@@ -26,8 +28,6 @@ do
 		docker rmi serveurminecraft:latest
 		docker push jimmyord/minecraft_server:$version
 	#docker push jimmyord/minecraft_server:latest
-	else
-	echo "$version existe déjà!"
 	fi
 done < <(cat minecraft.txt)
 docker logout
