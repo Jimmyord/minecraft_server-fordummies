@@ -8,26 +8,32 @@ while read ligne
 do
 	test=$(echo $ligne | sed -r 's/\./\\./g')
 	test2=$(curl https://hub.docker.com/r/jimmyord/minecraft_server/tags/ | sed -En "s/^.*($test).*$/\1/p")
+	test3=$(curl https://minecraft.gamepedia.com/Java_Edition_$ligne | sed -rn 's/.*href="(.*\.jar)">Server<\/a>.*/\1/p')
 	if [ -n "$test2" ]
 	then
 		echo "$ligne existe déjà!"
 	else
-		version=$ligne
-		sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
-		#Building and running the container
-		docker-compose up -d 
-		if [[ $? = 0 ]] 
+		if [ $test3 == "" ]
 		then
-			echo "Server is running."
-			docker-compose down
+			echo "Pas de version de server disponible pour : $ligne"
 		else
-			echo "La mise en service du conteneur a rencontré un problème."
-			exit 1
+			version=$ligne
+			sed -ri 's/^(.*versionminecraft:).*$/\1 '$version'/' docker-compose.yml
+			#Building and running the container
+			docker-compose up -d 
+			if [[ $? = 0 ]] 
+			then
+				echo "Server is running."
+				docker-compose down
+			else
+				echo "La mise en service du conteneur a rencontré un problème."
+				exit 1
+			fi
+			docker tag serveurminecraft:latest jimmyord/minecraft_server:$version
+			docker rmi serveurminecraft:latest
+			docker push jimmyord/minecraft_server:$version
+		#docker push jimmyord/minecraft_server:latest
 		fi
-		docker tag serveurminecraft:latest jimmyord/minecraft_server:$version
-		docker rmi serveurminecraft:latest
-		docker push jimmyord/minecraft_server:$version
-	#docker push jimmyord/minecraft_server:latest
 	fi
 done < <(cat minecraft.txt)
 docker logout
