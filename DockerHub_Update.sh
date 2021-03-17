@@ -13,7 +13,7 @@ do
 	then
 		echo "$ligne existe déjà!"
 	else
-		if [ $test3 == "" ]
+		if [ $test3 = "" ]
 		then
 			echo "Pas de version de server disponible pour : $ligne"
 		else
